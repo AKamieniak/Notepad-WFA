@@ -14,12 +14,14 @@ namespace Notatnik
     public partial class Notatnik : Form
     {
         public int liczbaZnakow { get; set; }
+        public int a = 0;
 
         public Notatnik()
         {
             InitializeComponent();
         }
         //translator 
+        
         public string TranslateWord(string word)
         {
             string url = String.Format("http://www.google.com/translate_t?hl=en&ie=UTF8&text={0}&langpair={1}", word, "pl|en");
