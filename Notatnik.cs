@@ -14,7 +14,6 @@ namespace Notatnik
     public partial class Notatnik : Form
     {
         public int liczbaZnakow { get; set; }
-        public int a = 0;
 
         public Notatnik()
         {
@@ -22,9 +21,9 @@ namespace Notatnik
         }
         //translator 
         
-        public string TranslateWord(string word)
+        public string TranslateWord(string word,string language)
         {
-            string url = String.Format("http://www.google.com/translate_t?hl=en&ie=UTF8&text={0}&langpair={1}", word, "pl|en");
+            string url = String.Format("http://www.google.com/translate_t?hl=en&ie=UTF8&text={0}&langpair={1}", word, language);
             WebClient webClient = new WebClient();
             webClient.Encoding = Encoding.GetEncoding(28592);
             string result = webClient.DownloadString(url);
@@ -201,6 +200,18 @@ namespace Notatnik
         {
             Znajdowanie znajdowanie = new Znajdowanie(this);
             znajdowanie.Show();
+        }
+
+        private void polAngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string zaznaczone = txtBox.SelectedText;
+            txtBox.SelectedText = TranslateWord(zaznaczone, "pl|en");
+        }
+
+        private void angPolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string zaznaczone = txtBox.SelectedText;
+            txtBox.SelectedText = TranslateWord(zaznaczone, "en|pl");
         }
     }
     }

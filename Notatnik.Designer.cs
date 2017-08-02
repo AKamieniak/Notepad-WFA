@@ -54,6 +54,9 @@
             this.wyswietlPomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblPasekStanu = new System.Windows.Forms.Label();
             this.czcionkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.translatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.polAngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.angPolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +78,8 @@
             this.edycjaToolStripMenuItem,
             this.zawijanieCzcionkiToolStripMenuItem,
             this.widokToolStripMenuItem,
-            this.pomocToolStripMenuItem});
+            this.pomocToolStripMenuItem,
+            this.translatorToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(620, 28);
@@ -263,6 +267,29 @@
             this.czcionkaToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.czcionkaToolStripMenuItem.Text = "Czcionka";
             // 
+            // translatorToolStripMenuItem
+            // 
+            this.translatorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.polAngToolStripMenuItem,
+            this.angPolToolStripMenuItem});
+            this.translatorToolStripMenuItem.Name = "translatorToolStripMenuItem";
+            this.translatorToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
+            this.translatorToolStripMenuItem.Text = "Translator";
+            // 
+            // polAngToolStripMenuItem
+            // 
+            this.polAngToolStripMenuItem.Name = "polAngToolStripMenuItem";
+            this.polAngToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.polAngToolStripMenuItem.Text = "Pol - Ang";
+            this.polAngToolStripMenuItem.Click += new System.EventHandler(this.polAngToolStripMenuItem_Click);
+            // 
+            // angPolToolStripMenuItem
+            // 
+            this.angPolToolStripMenuItem.Name = "angPolToolStripMenuItem";
+            this.angPolToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.angPolToolStripMenuItem.Text = "Ang - Pol";
+            this.angPolToolStripMenuItem.Click += new System.EventHandler(this.angPolToolStripMenuItem_Click);
+            // 
             // Notatnik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -310,6 +337,9 @@
         private System.Windows.Forms.ToolStripMenuItem czcionkaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem czcionkaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem otwórzToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem translatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem polAngToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem angPolToolStripMenuItem;
     }
 }
 
