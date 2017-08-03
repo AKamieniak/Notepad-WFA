@@ -52,11 +52,11 @@
             this.pasekStanuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyswietlPomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblPasekStanu = new System.Windows.Forms.Label();
-            this.czcionkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.translatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.polAngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.angPolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblPasekStanu = new System.Windows.Forms.Label();
+            this.czcionkaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,18 +111,21 @@
             this.otwórzToolStripMenuItem.Name = "otwórzToolStripMenuItem";
             this.otwórzToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.otwórzToolStripMenuItem.Text = "Otwórz...";
+            this.otwórzToolStripMenuItem.Click += new System.EventHandler(this.otwórzToolStripMenuItem_Click);
             // 
             // zapiszToolStripMenuItem
             // 
             this.zapiszToolStripMenuItem.Name = "zapiszToolStripMenuItem";
             this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.zapiszToolStripMenuItem.Text = "Zapisz";
+            this.zapiszToolStripMenuItem.Click += new System.EventHandler(this.zapiszToolStripMenuItem_Click);
             // 
             // zapiszJakoToolStripMenuItem
             // 
             this.zapiszJakoToolStripMenuItem.Name = "zapiszJakoToolStripMenuItem";
             this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako...";
+            this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.zapiszJakoToolStripMenuItem_Click);
             // 
             // ustawieniaStronyToolStripMenuItem
             // 
@@ -234,7 +237,7 @@
             // pasekStanuToolStripMenuItem
             // 
             this.pasekStanuToolStripMenuItem.Name = "pasekStanuToolStripMenuItem";
-            this.pasekStanuToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.pasekStanuToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.pasekStanuToolStripMenuItem.Text = "Pasek Stanu";
             this.pasekStanuToolStripMenuItem.Click += new System.EventHandler(this.pasekStanuToolStripMenuItem_Click);
             // 
@@ -253,6 +256,29 @@
             this.wyswietlPomocToolStripMenuItem.Text = "Wyświetl pomoc";
             this.wyswietlPomocToolStripMenuItem.Click += new System.EventHandler(this.wyswietlPomocToolStripMenuItem_Click);
             // 
+            // translatorToolStripMenuItem
+            // 
+            this.translatorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.polAngToolStripMenuItem,
+            this.angPolToolStripMenuItem});
+            this.translatorToolStripMenuItem.Name = "translatorToolStripMenuItem";
+            this.translatorToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
+            this.translatorToolStripMenuItem.Text = "Translator";
+            // 
+            // polAngToolStripMenuItem
+            // 
+            this.polAngToolStripMenuItem.Name = "polAngToolStripMenuItem";
+            this.polAngToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.polAngToolStripMenuItem.Text = "Pol - Ang";
+            this.polAngToolStripMenuItem.Click += new System.EventHandler(this.polAngToolStripMenuItem_Click);
+            // 
+            // angPolToolStripMenuItem
+            // 
+            this.angPolToolStripMenuItem.Name = "angPolToolStripMenuItem";
+            this.angPolToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.angPolToolStripMenuItem.Text = "Ang - Pol";
+            this.angPolToolStripMenuItem.Click += new System.EventHandler(this.angPolToolStripMenuItem_Click);
+            // 
             // lblPasekStanu
             // 
             this.lblPasekStanu.AutoSize = true;
@@ -266,29 +292,6 @@
             this.czcionkaToolStripMenuItem.Name = "czcionkaToolStripMenuItem";
             this.czcionkaToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.czcionkaToolStripMenuItem.Text = "Czcionka";
-            // 
-            // translatorToolStripMenuItem
-            // 
-            this.translatorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.polAngToolStripMenuItem,
-            this.angPolToolStripMenuItem});
-            this.translatorToolStripMenuItem.Name = "translatorToolStripMenuItem";
-            this.translatorToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
-            this.translatorToolStripMenuItem.Text = "Translator";
-            // 
-            // polAngToolStripMenuItem
-            // 
-            this.polAngToolStripMenuItem.Name = "polAngToolStripMenuItem";
-            this.polAngToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.polAngToolStripMenuItem.Text = "Pol - Ang";
-            this.polAngToolStripMenuItem.Click += new System.EventHandler(this.polAngToolStripMenuItem_Click);
-            // 
-            // angPolToolStripMenuItem
-            // 
-            this.angPolToolStripMenuItem.Name = "angPolToolStripMenuItem";
-            this.angPolToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.angPolToolStripMenuItem.Text = "Ang - Pol";
-            this.angPolToolStripMenuItem.Click += new System.EventHandler(this.angPolToolStripMenuItem_Click);
             // 
             // Notatnik
             // 

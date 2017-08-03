@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -19,9 +20,8 @@ namespace Notatnik
         {
             InitializeComponent();
         }
-        //translator 
-        
-        public string TranslateWord(string word,string language)
+
+        public string TranslateWord(string word, string language)
         {
             string url = String.Format("http://www.google.com/translate_t?hl=en&ie=UTF8&text={0}&langpair={1}", word, language);
             WebClient webClient = new WebClient();
@@ -59,7 +59,7 @@ namespace Notatnik
         {
             int poczatek = txtBox.Text.IndexOf(_slowo);
 
-            for (int i = 0; i < _kolejne;i++)
+            for (int i = 0; i < _kolejne; i++)
             {
                 poczatek = txtBox.Text.IndexOf(_slowo, poczatek + _slowo.Length);
             }
@@ -77,6 +77,33 @@ namespace Notatnik
             }
         }
 
+        public void ZapiszJako(string _zapisz)
+        {
+            if (_zapisz == "zapisz")
+            {
+                string lines = txtBox.Text;
+                System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\User\Desktop\Notatnik.txt");
+                file.WriteLine(lines);
+                file.Close();
+            }
+            else {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "txt|*.txt|doc|*.doc";
+                saveFileDialog.Title = "Zapisz";
+                saveFileDialog.ShowDialog();
+
+                if (saveFileDialog.FileName != "")
+                {
+                    string lines = txtBox.Text;
+                    string sciezka = saveFileDialog.FileName;
+
+                    System.IO.StreamWriter file = new System.IO.StreamWriter(sciezka);
+                    file.WriteLine(lines);
+                    file.Close();
+                }
+            }
+        }
+
         private void godzinadataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DateTime thisDay = DateTime.Now;
@@ -90,7 +117,7 @@ namespace Notatnik
 
         private void cofnijToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //nie dziala
+            //nie dziala zawsze
             if (txtBox.CanUndo == true)
             {
                 txtBox.Undo();
@@ -100,7 +127,7 @@ namespace Notatnik
 
         private void kopiujToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (txtBox.SelectionLength > 0) 
+            if (txtBox.SelectionLength > 0)
                 txtBox.Copy();
         }
 
@@ -130,7 +157,7 @@ namespace Notatnik
             else
             {
                 pasekStanuToolStripMenuItem.Checked = false;
-                lblPasekStanu.Text = "" ;
+                lblPasekStanu.Text = "";
             }
 
         }
@@ -150,44 +177,26 @@ namespace Notatnik
             System.Diagnostics.Process.Start("http://support.microsoft.com/pl-pl/products/windows?os=windows-10");
         }
 
-        private void znajdzToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //nowe okno do wpisywania szukanych rzeczy
-        }
-
         private void zakonczToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Czy chcesz zapisac obecny plik?", "Nowy", MessageBoxButtons.YesNo) == DialogResult.No)
                 Application.Exit();
-            //else
-            //zapisz plik
-
-
-            /*Stream myStream;
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            saveFileDialog.FilterIndex = 2;
-            saveFileDialog.RestoreDirectory = true;
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            else
             {
-                if ((myStream = saveFileDialog.OpenFile()) != null)
-                {
-                    // Code to write the stream goes here.
-                    myStream.Close();
-                }
+                ZapiszJako("zapiszJako");
             }
-            */
+
         }
 
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Czy chcesz zapisac obecny plik?", "Nowy", MessageBoxButtons.YesNo) == DialogResult.No)
             {
-                var Form = new Notatnik();
-                Form.Show();
+                Notatnik notatnik = new Notatnik();
+                notatnik.Show();
             }
+            else
+                ZapiszJako("zapiszJako");
         }
 
         private void czcionkaToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -213,6 +222,36 @@ namespace Notatnik
             string zaznaczone = txtBox.SelectedText;
             txtBox.SelectedText = TranslateWord(zaznaczone, "en|pl");
         }
+
+        private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Plik zapisano jako Notatnik.txt");
+            ZapiszJako("zapisz");
+        }
+
+        private void zapiszJakoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ZapiszJako("zapiszJako");
+        }
+
+        private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "txt|*.txt|doc|*.doc";
+            openFileDialog.Title = "Otwórz";
+            openFileDialog.ShowDialog();
+
+
+            string filename = openFileDialog.FileName;
+            string[] filelines = File.ReadAllLines(filename);
+
+            for (int a = 0; a < filelines.Length; a++)
+            {
+                txtBox.Text += filelines[a];
+            }
+
+        }
     }
-    }
+}
 
